@@ -23,8 +23,14 @@ function Resolve-SupabaseCommand {
     return @{ Exe = 'pnpm'; Prefix = @('dlx', 'supabase@latest') }
   }
 
-  $systemNpx = Join-Path $env:ProgramFiles 'nodejs\npx.cmd'
+  $nodeInstallDir = Join-Path $env:ProgramFiles 'nodejs'
+  $systemNpx = Join-Path $nodeInstallDir 'npx.cmd'
   if (Test-Path -LiteralPath $systemNpx) {
+    # Janelas do PowerShell abertas antes da instalação ainda não recebem o
+    # PATH atualizado pelo instalador. Atualizamos apenas este processo.
+    if (($env:Path -split ';') -notcontains $nodeInstallDir) {
+      $env:Path = "$nodeInstallDir;$env:Path"
+    }
     return @{ Exe = $systemNpx; Prefix = @('--yes', 'supabase@latest') }
   }
 
