@@ -84,6 +84,17 @@ pnpm preview
 
 O resultado é gerado em `dist/`.
 
+## Segurança antes da publicação
+
+- somente a chave Publishable é usada no frontend;
+- `.env`, `.env.local`, arquivos temporários e credenciais do CLI são ignorados pelo Git;
+- tabelas públicas têm RLS forçada e permitem apenas `SELECT` para `anon` e `authenticated`;
+- a chave Secret existe apenas na memória durante a carga administrativa;
+- o Render aplica CSP, HTTPS/HSTS, bloqueio de iframe, `nosniff`, política de referência e bloqueio de câmera, microfone, localização, pagamentos e USB;
+- o bucket `portfolio` é público porque contém somente artes destinadas à exibição pública.
+
+Antes de abrir o site ao público, execute o **Security Advisor** do Supabase e ative MFA na conta Supabase e no provedor usado para login.
+
 ## Subir para o Render
 
 O `render.yaml` já descreve um Static Site, o build com pnpm, a pasta `dist`, o rewrite da SPA e o cache dos assets.
