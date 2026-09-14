@@ -156,6 +156,47 @@ section { scroll-margin-top: 60px; }
 .contact footer span:last-child { text-align: right; }
 .contact footer small { font-family: var(--font-serif); font-size: .9rem; letter-spacing: 0; }
 
+@media (min-width: 901px) {
+  .hero { padding-top: 6rem; }
+  .hero__title { width: min(46vw, 680px); }
+  .hero__title h1 { font-size: clamp(9rem, 18vw, 19rem); line-height: .68; }
+  .hero__title em { font-size: clamp(4.5rem, 8vw, 8.5rem); }
+  .hero__art--left { left: 10%; width: clamp(150px, 17vw, 280px); }
+  .hero__art--right { right: 11%; width: clamp(145px, 16vw, 270px); }
+
+  .about { padding-bottom: 6rem; }
+  .about__grid { max-width: 1320px; margin-top: 3.5rem; }
+  .about__visual { min-height: clamp(560px, 52vw, 720px); }
+  .about__visual img { width: min(54%, 400px); }
+  .about__visual h2 { font-size: clamp(6rem, 9vw, 10rem); }
+  .about__content { padding-top: 5rem; }
+  .about__content > div:first-child { font-size: clamp(1.15rem, 1.4vw, 1.55rem); }
+  .about__quote { margin-top: 2.5rem; padding-top: 2rem; }
+  .about__quote p { font-size: clamp(1.9rem, 2.8vw, 3.3rem); }
+
+  .skills h2 { margin: 2.5rem 0 -1.5rem; font-size: clamp(9rem, 16vw, 17rem); }
+  .marquee div { font-size: clamp(3rem, 5vw, 5.5rem); }
+  .skills__index { max-width: 1600px; margin: 4rem auto 0; }
+  .skills__index div { min-height: 6.5rem; }
+  .skills__index p { margin-top: 1.8rem; }
+
+  .portfolio { padding-bottom: 7rem; }
+  .portfolio__intro { max-width: 1600px; margin: auto; padding-top: 3rem; padding-bottom: 6rem; }
+  .portfolio__intro h2 { max-width: 980px; margin-top: 3.5rem; font-size: clamp(4.5rem, 8vw, 8.5rem); line-height: .76; }
+  .portfolio__intro > p { font-size: 1.3rem; }
+  .portfolio__grid { max-width: 1500px; margin-right: auto; margin-left: auto; gap: clamp(2rem, 4vw, 5rem) clamp(1rem, 2vw, 2.25rem); }
+  .project-card--2 { margin-top: 8rem; }
+  .manifesto { margin: 7rem 0 6rem; padding-top: 5rem; padding-bottom: 6rem; }
+  .manifesto p { margin-top: 2.5rem; font-size: clamp(4rem, 9vw, 9.5rem); line-height: .78; }
+  .project-card--5 { margin-top: 10rem; }
+  .project-card--6 { margin-top: 3rem; }
+  .project-card--7 { margin-top: 8rem; }
+
+  .contact h2 { margin-top: 4rem; font-size: clamp(6rem, 12vw, 13rem); line-height: .72; }
+  .contact__lead { margin-top: 3rem; font-size: clamp(1.4rem, 2.2vw, 2.5rem); }
+  .contact__links a { font-size: clamp(2.7rem, 4.5vw, 5rem); }
+}
+
 @media (max-width: 900px) {
   .navbar__links { display: none; }
   .navbar__menu { display: block; }
@@ -186,8 +227,8 @@ section { scroll-margin-top: 60px; }
   .hero::before { inset: 9% .8rem 4%; }
   .hero__meta { top: 12%; }
   .hero__title { width: 100%; }
-  .hero__title h1 { font-size: clamp(8rem, 42vw, 12rem); line-height: .7; }
-  .hero__title em { font-size: 5rem; }
+  .hero__title h1 { font-size: clamp(7rem, 37vw, 10rem); line-height: .72; }
+  .hero__title em { font-size: 4.4rem; }
   .hero__art--left { bottom: 8%; left: 1.4rem; width: 36vw; }
   .hero__art--right { top: 17%; right: .7rem; width: 33vw; }
   .hero__role { bottom: 4.5%; font-size: .52rem; }
@@ -198,26 +239,26 @@ section { scroll-margin-top: 60px; }
   .about__grid { gap: 2rem; margin-top: 3rem; }
   .about__visual { min-height: 570px; }
   .about__visual img { width: 76%; height: 68%; border-radius: 3rem 3rem 0 0; }
-  .about__visual h2 { top: 0; right: 0; left: auto; font-size: 30vw; line-height: .78; text-align: right; }
+  .about__visual h2 { top: 0; right: 0; left: auto; font-size: 27vw; line-height: .8; text-align: right; }
   .about__content > div:first-child { font-size: 1.2rem; }
   .about__quote { padding-top: 2rem; }
   .about__quote p { font-size: 2.25rem; }
   .skills { min-height: auto; padding-bottom: 4rem; }
-  .skills h2 { margin: 3rem 0 -1rem; font-size: 43vw; }
-  .marquee div { font-size: 3.6rem; }
+  .skills h2 { margin: 3rem 0 -.75rem; font-size: 38vw; }
+  .marquee div { font-size: 3.1rem; }
   .skills__index { grid-template-columns: repeat(2, 1fr); margin-top: 4rem; }
   .skills__index div { min-height: 6.5rem; }
   .portfolio { padding-bottom: 6rem; }
   .portfolio__intro { padding-top: 2rem; padding-bottom: 4rem; }
-  .portfolio__intro h2 { margin-top: 3rem; font-size: 19vw; line-height: .8; }
+  .portfolio__intro h2 { margin-top: 3rem; font-size: 13.5vw; line-height: .86; }
   .portfolio__intro > p { font-size: 1.2rem; }
   .portfolio__grid { display: block; }
-  .project-card { width: 90%; margin: 0 0 4.5rem !important; }
+  .project-card { width: 88%; margin: 0 0 4rem !important; }
   .project-card:nth-child(even) { margin-left: auto !important; }
   .project-card__caption { font-size: 1.05rem; }
   .project-card__hover { display: none; }
   .manifesto { margin: 4rem 0; padding: 5rem var(--gutter); }
-  .manifesto p { font-size: 17vw; line-height: .8; }
+  .manifesto p { font-size: 15vw; line-height: .82; }
   .project-modal__header { grid-template-columns: auto 1fr auto; gap: .8rem; }
   .project-modal__header h2 { font-size: 2.7rem; }
   .project-modal__header button { font-size: 0; }
@@ -226,10 +267,10 @@ section { scroll-margin-top: 60px; }
   .project-modal__gallery { grid-template-columns: 1fr; }
   .project-modal__gallery img:nth-child(3n) { grid-column: auto; width: 100%; margin: 0; }
   .contact { min-height: 0; padding-top: 4.5rem; }
-  .contact h2 { margin-top: 4rem; font-size: 24vw; line-height: .72; }
+  .contact h2 { margin-top: 4rem; font-size: 21vw; line-height: .74; }
   .contact h2 em { font-size: .7em; }
   .contact__lead { margin-top: 3rem; font-size: 1.55rem; }
-  .contact__links a { min-height: 5rem; font-size: 2.3rem; }
+  .contact__links a { min-height: 4.5rem; font-size: 2rem; }
   .contact__links a:hover { padding-right: 0; padding-left: 0; color: var(--cream); background: transparent; }
   .contact__links a:hover svg { transform: none; }
   .contact__details { justify-content: space-between; gap: 1rem; font-size: .9rem; }

@@ -1,5 +1,17 @@
 import type { Project } from '../types'
 import { localProjects } from '../data/projects'
+import type { SupabaseClient } from '@supabase/supabase-js'
+
+let clientPromise: Promise<SupabaseClient> | null = null
+
+function getClient(url: string, key: string) {
+  if (!clientPromise) {
+    clientPromise = import('@supabase/supabase-js').then(({ createClient }) =>
+      createClient(url, key),
+    )
+  }
+  return clientPromise
+}
 
 type ProjectRow = {
   id: string
@@ -20,8 +32,7 @@ export async function loadProjects(): Promise<Project[]> {
   if (!url || !key) return localProjects
 
   try {
-    const { createClient } = await import('@supabase/supabase-js')
-    const client = createClient(url, key)
+    const client = await getClient(url, key)
     const { data, error } = await client
       .from('projects')
       .select('id,title,slug,category,description,cover_url,position,project_images(image_url,alt_text,position)')
