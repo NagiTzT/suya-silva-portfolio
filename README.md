@@ -97,7 +97,7 @@ Antes de abrir o site ao público, execute o **Security Advisor** do Supabase e 
 
 ## Subir para o Render
 
-O `render.yaml` já descreve um Static Site, o build com pnpm, a pasta `dist`, o rewrite da SPA e o cache dos assets.
+O `render.yaml` já descreve um Static Site, o build reproduzível com `npm ci`, a pasta `dist`, o rewrite da SPA e o cache dos assets.
 
 1. Envie este projeto para um repositório GitHub.
 2. Entre em [dashboard.render.com](https://dashboard.render.com/) e conecte sua conta GitHub, se necessário.

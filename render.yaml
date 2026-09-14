@@ -2,10 +2,12 @@ services:
   - type: web
     name: suya-silva-portfolio
     runtime: static
-    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run build
+    buildCommand: npm ci --no-audit --no-fund && npm run build
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: true
     envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: "true"
       - key: VITE_SUPABASE_URL
         sync: false
       - key: VITE_SUPABASE_PUBLISHABLE_KEY
