@@ -35,6 +35,12 @@ A chave Secret é solicitada apenas durante a carga inicial, fica na memória do
    Set-ExecutionPolicy -Scope Process Bypass
    ```
 
+   Se o Windows informar que o Node.js não foi encontrado, instale o requisito oficial e abra um novo PowerShell:
+
+   ```powershell
+   winget install --id OpenJS.NodeJS.LTS -e --source winget
+   ```
+
 5. Faça primeiro uma validação sem alterar o projeto remoto:
 
    ```powershell
@@ -103,4 +109,3 @@ Depois do commit local, crie no GitHub um repositório vazio chamado `suya-silva
 git remote add origin https://github.com/SEU_USUARIO/suya-silva-portfolio.git
 git push -u origin main
 ```
-

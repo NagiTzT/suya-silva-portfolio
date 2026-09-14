@@ -22,7 +22,23 @@ function Resolve-SupabaseCommand {
   if (Get-Command 'pnpm' -ErrorAction SilentlyContinue) {
     return @{ Exe = 'pnpm'; Prefix = @('dlx', 'supabase@latest') }
   }
-  throw 'Instale o Node.js LTS (inclui npx) ou o Supabase CLI antes de continuar.'
+
+  $systemNpx = Join-Path $env:ProgramFiles 'nodejs\npx.cmd'
+  if (Test-Path -LiteralPath $systemNpx) {
+    return @{ Exe = $systemNpx; Prefix = @('--yes', 'supabase@latest') }
+  }
+
+  throw 'Node.js não encontrado. Instale com: winget install --id OpenJS.NodeJS.LTS -e --source winget'
+}
+
+function Resolve-NodeCommand {
+  $command = Get-Command 'node' -ErrorAction SilentlyContinue
+  if ($command) { return $command.Source }
+
+  $systemNode = Join-Path $env:ProgramFiles 'nodejs\node.exe'
+  if (Test-Path -LiteralPath $systemNode) { return $systemNode }
+
+  throw 'Node.js não foi encontrado. Feche e abra o PowerShell depois da instalação.'
 }
 
 function Invoke-Supabase {
@@ -78,15 +94,13 @@ try {
   $publishableKey = $null
 
   if ($Seed) {
-    if (-not (Get-Command 'node' -ErrorAction SilentlyContinue)) {
-      throw 'Node.js não foi encontrado. Instale o Node.js LTS para carregar os projetos e imagens.'
-    }
+    $nodeCommand = Resolve-NodeCommand
 
     $secretKey = ConvertFrom-SecureValue (Read-Host 'Cole a chave Secret (uso local e temporário)' -AsSecureString)
     try {
       $env:SUPABASE_URL = $supabaseUrl
       $env:SUPABASE_SECRET_KEY = $secretKey
-      node (Join-Path $PSScriptRoot 'seed-supabase.mjs')
+      & $nodeCommand (Join-Path $PSScriptRoot 'seed-supabase.mjs')
       if ($LASTEXITCODE -ne 0) { throw 'A carga de dados falhou.' }
     } finally {
       Remove-Item Env:SUPABASE_URL -ErrorAction SilentlyContinue
