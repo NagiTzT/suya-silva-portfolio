@@ -13,14 +13,19 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 
 function Resolve-SupabaseCommand {
-  if (Get-Command 'supabase' -ErrorAction SilentlyContinue) {
-    return @{ Exe = 'supabase'; Prefix = @() }
+  $supabaseExe = Get-Command 'supabase.exe' -ErrorAction SilentlyContinue
+  if ($supabaseExe) {
+    return @{ Exe = $supabaseExe.Source; Prefix = @() }
   }
-  if (Get-Command 'npx' -ErrorAction SilentlyContinue) {
-    return @{ Exe = 'npx'; Prefix = @('--yes', 'supabase@latest') }
+
+  $npxCmd = Get-Command 'npx.cmd' -ErrorAction SilentlyContinue
+  if ($npxCmd) {
+    return @{ Exe = $npxCmd.Source; Prefix = @('--yes', 'supabase@latest') }
   }
-  if (Get-Command 'pnpm' -ErrorAction SilentlyContinue) {
-    return @{ Exe = 'pnpm'; Prefix = @('dlx', 'supabase@latest') }
+
+  $pnpmCmd = Get-Command 'pnpm.cmd' -ErrorAction SilentlyContinue
+  if ($pnpmCmd) {
+    return @{ Exe = $pnpmCmd.Source; Prefix = @('dlx', 'supabase@latest') }
   }
 
   $nodeInstallDir = Join-Path $env:ProgramFiles 'nodejs'
@@ -49,7 +54,9 @@ function Resolve-NodeCommand {
 
 function Invoke-Supabase {
   param([Parameter(ValueFromRemainingArguments = $true)][string[]]$CommandArgs)
-  & $script:supabaseCommand.Exe @($script:supabaseCommand.Prefix) @CommandArgs
+  $executable = $script:supabaseCommand.Exe
+  $prefixArguments = $script:supabaseCommand.Prefix
+  & $executable @prefixArguments @CommandArgs
   if ($LASTEXITCODE -ne 0) {
     throw "O comando Supabase falhou: $($CommandArgs -join ' ')"
   }
