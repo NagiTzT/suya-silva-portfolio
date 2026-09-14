@@ -51,7 +51,7 @@ section { scroll-margin-top: 60px; }
 .hero { position: relative; display: grid; place-items: center; min-height: 100svh; overflow: hidden; padding: 7rem var(--gutter) 3.5rem; isolation: isolate; }
 .hero::before { position: absolute; inset: 7% 4%; z-index: -2; content: ''; border: 1px solid rgba(241,227,210,.22); pointer-events: none; }
 .hero__meta { position: absolute; top: 17%; left: var(--gutter); display: flex; align-items: flex-end; gap: 1rem; line-height: 1.5; }
-.hero__meta i { display: block; width: 2rem; height: 1px; margin-bottom: .25rem; background: currentColor; }
+.hero__meta i { display: block; width: 2rem; height: 1px; margin-bottom: 0; background: currentColor; }
 .hero__title { position: relative; z-index: 2; width: min(52vw, 800px); }
 .hero__title h1 { display: grid; margin: 0; font-family: var(--font-display); font-size: clamp(10rem, 23vw, 24rem); font-weight: 400; line-height: .66; letter-spacing: -.015em; text-align: center; }
 .hero__title em { position: absolute; top: 42%; left: 50%; color: var(--cream); font-family: var(--font-script); font-size: clamp(5rem, 10vw, 11rem); font-weight: 400; line-height: 1; transform: translateX(-50%) rotate(-4deg); text-shadow: 0 2px 16px rgba(74,0,0,.4); }
@@ -161,8 +161,8 @@ section { scroll-margin-top: 60px; }
   .hero__title { width: min(46vw, 680px); }
   .hero__title h1 { font-size: clamp(9rem, 18vw, 19rem); line-height: .68; }
   .hero__title em { font-size: clamp(4.5rem, 8vw, 8.5rem); }
-  .hero__art--left { left: 10%; width: clamp(150px, 17vw, 280px); }
-  .hero__art--right { right: 11%; width: clamp(145px, 16vw, 270px); }
+  .hero__art--left { left: 9%; width: clamp(165px, 19vw, 315px); }
+  .hero__art--right { right: 10%; width: clamp(160px, 18vw, 300px); }
 
   .about { padding-bottom: 6rem; }
   .about__grid { max-width: 1320px; margin-top: 3.5rem; }
@@ -183,10 +183,12 @@ section { scroll-margin-top: 60px; }
   .portfolio { padding-bottom: 7rem; }
   .portfolio__intro { max-width: 1600px; margin: auto; padding-top: 3rem; padding-bottom: 6rem; }
   .portfolio__intro h2 { max-width: 980px; margin-top: 3.5rem; font-size: clamp(4.5rem, 8vw, 8.5rem); line-height: .76; }
-  .portfolio__intro > p { font-size: 1.3rem; }
+  .portfolio__intro > p { width: min(100%, 980px); max-width: none; margin: 1.25rem 0 0; padding-left: 50%; font-size: 1.3rem; }
   .portfolio__grid { max-width: 1500px; margin-right: auto; margin-left: auto; gap: clamp(2rem, 4vw, 5rem) clamp(1rem, 2vw, 2.25rem); }
   .project-card--2 { margin-top: 8rem; }
   .manifesto { margin: 7rem 0 6rem; padding-top: 5rem; padding-bottom: 6rem; }
+  .manifesto > span,
+  .manifesto > div { display: block; width: min(100%, 1500px); margin-right: auto; margin-left: auto; }
   .manifesto p { margin-top: 2.5rem; font-size: clamp(4rem, 9vw, 9.5rem); line-height: .78; }
   .project-card--5 { margin-top: 10rem; }
   .project-card--6 { margin-top: 3rem; }
